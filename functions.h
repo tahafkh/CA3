@@ -1,0 +1,32 @@
+typedef struct userInfo user;
+typedef struct transactionInfo transaction;
+struct transactionInfo {
+	char type[20];
+	double value;
+	transaction *next;
+};
+struct userInfo {
+	char name[20];
+	char password[20];
+	long int id;
+	char phoneNumber[20];
+	double balance;
+	int numsoftransactions;
+	user *next;
+	transaction *first;
+};
+user* readFromFile();
+transaction* headTransaction();
+transaction* newTrans(transaction* current);
+user* headUser();
+user* newUser(user*current);
+void writeToFile(user*head);
+int commandOperations(user*head, int log, char *username);
+void view(user* head, int log, char*username);
+void delete(user* head, int log);
+void transfer(char*username, int log, user* head);
+void withdraw(user*head, int log);
+void deposit(user*head, int log);
+void add_user(user *head,int log);
+void login(char *username, char* password, user *head, int *log);
+user* search(char *username, user *head);
